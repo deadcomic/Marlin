@@ -511,7 +511,7 @@
  * Hotend Idle Timeout
  * Prevent filament in the nozzle from charring and causing a critical jam.
  */
-//#define HOTEND_IDLE_TIMEOUT
+#define HOTEND_IDLE_TIMEOUT
 #if ENABLED(HOTEND_IDLE_TIMEOUT)
   #define HOTEND_IDLE_TIMEOUT_SEC (5*60)    // (seconds) Time without extruder movement to trigger protection
   #define HOTEND_IDLE_MIN_TRIGGER   180     // (°C) Minimum temperature to enable hotend protection
@@ -1030,7 +1030,7 @@
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
-  #define TRAMMING_POINT_XY { {  20, 20 }, { 180,  20 }, { 180, 180 }, { 20, 180 } }
+  #define TRAMMING_POINT_XY { {  27, 46 }, { 327,  46 }, { 327, 308 }, { 27, 308 } }
 
   // Define position names for probe points.
   #define TRAMMING_POINT_NAME_1 "Front-Left"
@@ -1039,9 +1039,9 @@
   #define TRAMMING_POINT_NAME_4 "Back-Left"
 
   #define RESTORE_LEVELING_AFTER_G35    // Enable to restore leveling setup after operation
-  //#define REPORT_TRAMMING_MM          // Report Z deviation (mm) for each point relative to the first
+  #define REPORT_TRAMMING_MM          // Report Z deviation (mm) for each point relative to the first
 
-  //#define ASSISTED_TRAMMING_WIZARD    // Add a Tramming Wizard to the LCD menu
+  #define ASSISTED_TRAMMING_WIZARD    // Add a Tramming Wizard to the LCD menu
 
   //#define ASSISTED_TRAMMING_WAIT_POSITION { X_CENTER, Y_CENTER, 30 } // Move the nozzle out of the way for adjustment
 
@@ -1079,8 +1079,8 @@
  *  X<1>         Set the given parameters only for the X axis.
  *  Y<1>         Set the given parameters only for the Y axis.
  */
-//#define INPUT_SHAPING_X
-//#define INPUT_SHAPING_Y
+#define INPUT_SHAPING_X
+#define INPUT_SHAPING_Y
 #if EITHER(INPUT_SHAPING_X, INPUT_SHAPING_Y)
   #if ENABLED(INPUT_SHAPING_X)
     #define SHAPING_FREQ_X  40    // (Hz) The default dominant resonant frequency on the X axis.
@@ -1090,7 +1090,7 @@
     #define SHAPING_FREQ_Y  40    // (Hz) The default dominant resonant frequency on the Y axis.
     #define SHAPING_ZETA_Y  0.15f // Damping ratio of the Y axis (range: 0.0 = no damping to 1.0 = critical damping).
   #endif
-  //#define SHAPING_MENU          // Add a menu to the LCD to set shaping parameters.
+  #define SHAPING_MENU          // Add a menu to the LCD to set shaping parameters.
 #endif
 
 #define AXIS_RELATIVE_MODES { false, false, false, false }
@@ -1371,7 +1371,7 @@
 //#define LCD_BACKLIGHT_TIMEOUT_MINS 1  // (minutes) Timeout before turning off the backlight
 
 #if HAS_BED_PROBE && EITHER(HAS_MARLINUI_MENU, HAS_TFT_LVGL_UI)
-  //#define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
+  #define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
   #if ENABLED(PROBE_OFFSET_WIZARD)
     /**
      * Enable to init the Probe Z-Offset when starting the Wizard.
@@ -1407,7 +1407,7 @@
   #endif
 
   // Include a page of printer information in the LCD Main Menu
-  //#define LCD_INFO_MENU
+  #define LCD_INFO_MENU
   #if ENABLED(LCD_INFO_MENU)
     //#define LCD_PRINTER_INFO_IS_BOOTSCREEN // Show bootscreen(s) instead of Printer Info pages
   #endif
@@ -1416,7 +1416,7 @@
   //#define TURBO_BACK_MENU_ITEM
 
   // Insert a menu for preheating at the top level to allow for quick access
-  //#define PREHEAT_SHORTCUT_MENU_ITEM
+  #define PREHEAT_SHORTCUT_MENU_ITEM
 
 #endif // HAS_MARLINUI_MENU
 
@@ -1437,7 +1437,7 @@
   #endif
 
   // Scroll a longer status message into view
-  //#define STATUS_MESSAGE_SCROLLING
+  #define STATUS_MESSAGE_SCROLLING
 
   // Apply a timeout to low-priority status messages
   //#define STATUS_MESSAGE_TIMEOUT_SEC 30 // (seconds)
@@ -1492,7 +1492,7 @@
 #if HAS_DISPLAY && EITHER(SDSUPPORT, SET_PROGRESS_MANUALLY)
   #define SHOW_PROGRESS_PERCENT           // Show print progress percentage (doesn't affect progress bar)
   #define SHOW_ELAPSED_TIME               // Display elapsed printing time (prefix 'E')
-  //#define SHOW_REMAINING_TIME           // Display estimated time to completion (prefix 'R')
+  #define SHOW_REMAINING_TIME           // Display estimated time to completion (prefix 'R')
   #if ENABLED(SET_INTERACTION_TIME)
     #define SHOW_INTERACTION_TIME         // Display time until next user interaction ('C' = filament change)
   #endif
@@ -1547,7 +1547,7 @@
 
   //#define BROWSE_MEDIA_ON_INSERT          // Open the file browser when media is inserted
 
-  //#define MEDIA_MENU_AT_TOP               // Force the media menu to be listed on the top of the main menu
+  #define MEDIA_MENU_AT_TOP               // Force the media menu to be listed on the top of the main menu
 
   #define EVENT_GCODE_SD_ABORT "G28XY"      // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
 
@@ -1632,7 +1632,7 @@
   //#define LONG_FILENAME_WRITE_SUPPORT   // Create / delete files with long filenames via M28, M30, and Binary Transfer Protocol
   //#define M20_TIMESTAMP_SUPPORT         // Include timestamps by adding the 'T' flag to M20 commands
 
-  //#define SCROLL_LONG_FILENAMES         // Scroll long filenames in the SD card menu
+  #define SCROLL_LONG_FILENAMES         // Scroll long filenames in the SD card menu
 
   //#define SD_ABORT_NO_COOLDOWN          // Leave the heaters on after Stop Print (not recommended!)
 
@@ -1838,10 +1838,10 @@
   //#define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~3260 (or ~940) bytes of flash.
 
   // Frivolous Game Options
-  //#define MARLIN_BRICKOUT
-  //#define MARLIN_INVADERS
-  //#define MARLIN_SNAKE
-  //#define GAMES_EASTER_EGG          // Add extra blank lines above the "Games" sub-menu
+  #define MARLIN_BRICKOUT
+  #define MARLIN_INVADERS
+  #define MARLIN_SNAKE
+  #define GAMES_EASTER_EGG          // Add extra blank lines above the "Games" sub-menu
 
 #endif // HAS_MARLINUI_U8GLIB
 
@@ -2067,7 +2067,7 @@
   #define BABYSTEP_MULTIPLICATOR_Z  1       // (steps or mm) Steps or millimeter distance for each Z babystep
   #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
 
-  //#define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
+  #define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
   #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
     #define DOUBLECLICK_MAX_INTERVAL 1250   // Maximum interval between clicks, in milliseconds.
                                             // Note: Extra time may be added to mitigate controller latency.
@@ -2077,12 +2077,12 @@
     #endif
   #endif
 
-  //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
+  #define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
   #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
-    //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
+    #define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
   #endif
 #endif
 
@@ -2671,7 +2671,7 @@
   //#define FILAMENT_CHANGE_RESUME_ON_INSERT      // Automatically continue / load filament when runout sensor is triggered again.
   //#define PAUSE_REHEAT_FAST_RESUME              // Reduce number of waits by not prompting again post-timeout before continuing.
 
-  //#define PARK_HEAD_ON_PAUSE                    // Park the nozzle during pause and filament change.
+  #define PARK_HEAD_ON_PAUSE                    // Park the nozzle during pause and filament change.
   //#define HOME_BEFORE_FILAMENT_CHANGE           // If needed, home before parking for filament change
 
   //#define FILAMENT_LOAD_UNLOAD_GCODES           // Add M701/M702 Load/Unload G-codes, plus Load/Unload in the LCD Prepare menu.

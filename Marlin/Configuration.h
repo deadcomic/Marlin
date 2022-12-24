@@ -60,7 +60,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(Ender5P SKR3EZ Base Config)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Ender5P SKR3EZ LCD Config)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -1274,10 +1274,10 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-//#define USE_PROBE_FOR_Z_HOMING
+#define USE_PROBE_FOR_Z_HOMING
 
 /**
  * Z_MIN_PROBE_PIN
@@ -1937,7 +1937,7 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  //#define G26_MESH_VALIDATION
+  #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.
@@ -1986,7 +1986,7 @@
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
   #define MESH_INSET 1             // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 5      // Don't use more than 15 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
@@ -1997,7 +1997,7 @@
   //#define UBL_Z_RAISE_WHEN_OFF_MESH 2.5 // When the nozzle is off the mesh, this value is used
                                           // as the Z-Height correction value.
 
-  //#define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
+  #define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
 
 #elif ENABLED(MESH_BED_LEVELING)
 
@@ -2026,18 +2026,18 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-#define LCD_BED_TRAMMING
+//#define LCD_BED_TRAMMING
 
 #if ENABLED(LCD_BED_TRAMMING)
   #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
   #define BED_TRAMMING_HEIGHT      0.0        // (mm) Z height of nozzle at leveling points
   #define BED_TRAMMING_Z_HOP       4.0        // (mm) Z height of nozzle between leveling points
-  //#define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
-  //#define BED_TRAMMING_USE_PROBE
+  #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
+  #define BED_TRAMMING_USE_PROBE
   #if ENABLED(BED_TRAMMING_USE_PROBE)
     #define BED_TRAMMING_PROBE_TOLERANCE 0.1  // (mm)
     #define BED_TRAMMING_VERIFY_RAISED        // After adjustment triggers the probe, re-probe to verify
-    //#define BED_TRAMMING_AUDIO_FEEDBACK
+    #define BED_TRAMMING_AUDIO_FEEDBACK
   #endif
 
   /**
@@ -2220,9 +2220,15 @@
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
+#define PREHEAT_2_LABEL       "PETG"
 #define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    110
+#define PREHEAT_2_TEMP_BED    70
+#define PREHEAT_2_TEMP_CHAMBER 35
+#define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
+
+#define PREHEAT_2_LABEL       "TPU"
+#define PREHEAT_2_TEMP_HOTEND 220
+#define PREHEAT_2_TEMP_BED    60
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
@@ -2476,7 +2482,7 @@
  * Disable all menus and only display the Status Screen, or
  * just remove some extraneous menu items to recover space.
  */
-#define NO_LCD_MENUS
+//#define NO_LCD_MENUS
 //#define SLIM_LCD_MENUS
 
 //
@@ -2508,7 +2514,7 @@
 //
 //  Set this option if CLOCKWISE causes values to DECREASE
 //
-//#define REVERSE_ENCODER_DIRECTION
+#define REVERSE_ENCODER_DIRECTION
 
 //
 // This option reverses the encoder direction for navigating LCD menus.
@@ -2516,7 +2522,7 @@
 //  If CLOCKWISE normally moves DOWN this makes it go UP.
 //  If CLOCKWISE normally moves UP this makes it go DOWN.
 //
-//#define REVERSE_MENU_DIRECTION
+#define REVERSE_MENU_DIRECTION
 
 //
 // This option reverses the encoder direction for Select Screen.
@@ -2524,7 +2530,7 @@
 //  If CLOCKWISE normally moves LEFT this makes it go RIGHT.
 //  If CLOCKWISE normally moves RIGHT this makes it go LEFT.
 //
-//#define REVERSE_SELECT_DIRECTION
+#define REVERSE_SELECT_DIRECTION
 
 //
 // Encoder EMI Noise Filter
@@ -2839,7 +2845,7 @@
 // This is RAMPS-compatible using a single 10-pin connector.
 // (For CR-10 owners who want to replace the Melzi Creality board but retain the display)
 //
-//#define CR10_STOCKDISPLAY
+#define CR10_STOCKDISPLAY
 
 //
 // Ender-2 OEM display, a variant of the MKS_MINI_12864
@@ -2973,11 +2979,11 @@
 //#define DGUS_LCD_UI_FYSETC
 //#define DGUS_LCD_UI_HIPRECY
 //#define DGUS_LCD_UI_MKS
-#define DGUS_LCD_UI_RELOADED
+//#define DGUS_LCD_UI_RELOADED
 #if ENABLED(DGUS_LCD_UI_MKS)
   #define USE_MKS_GREEN_UI
 #endif
-#define LCD_SERIAL_PORT 1
+//#define LCD_SERIAL_PORT 1
 
 //
 // Touch-screen LCD for Malyan M200/M300 printers
